@@ -44,10 +44,10 @@ set ::env(CLOCK_PERIOD) "10"
 ### Macro PDN Connections
 set ::env(FP_PDN_MACRO_HOOKS) "\
 	mprj vccd1 vssd1"
-
 ### Macro Placement
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 
+set ::env(FP_PDN_IRDROP) 0
 ### Black-box verilog and views
 set ::env(VERILOG_FILES_BLACKBOX) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
@@ -56,7 +56,8 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 set ::env(EXTRA_LEFS) "\
 	$script_dir/../../lef/Ibtida_top_dffram_cv.lef"
 
-set ::env(EXTRA_GDS_FILES) "\
+
+set ::env(EXTRA_GDS_FILES) " \
 	$script_dir/../../gds/Ibtida_top_dffram_cv.gds"
 
 set ::env(GLB_RT_MAXLAYER) 5
@@ -65,8 +66,6 @@ set ::env(GLB_RT_MAXLAYER) 5
 # any issue with pdn connections will be flagged with LVS so it is not a critical check.
 set ::env(FP_PDN_CHECK_NODES) 0
 
-set ::env(FP_PDN_VPITCH) 180
-set ::env(FP_PDN_HPITCH) 180
 # The following is because there are no std cells in the example wrapper project.
 set ::env(SYNTH_TOP_LEVEL) 1
 set ::env(PL_RANDOM_GLB_PLACEMENT) 1
@@ -76,7 +75,7 @@ set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_BUFFER_INPUT_PORTS) 0
 set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 0
 
-set ::env(FP_PDN_ENABLE_RAILS) 0
+set ::env(FP_PDN_ENABLE_RAILS) 0 
 
 set ::env(DIODE_INSERTION_STRATEGY) 0
 set ::env(FILL_INSERTION) 0

@@ -8711,8 +8711,8 @@ endmodule
 
 module Ibtida_top_dffram_cv(
 `ifdef USE_POWER_PINS
-     inout VPWR, // User area 1 1.8V supply
-     inout VGND, // User area 1 digital ground
+     inout vccd1, // User area 1 1.8V supply
+     inout vssd1, // User area 1 digital ground
 `endif  
 
 // Wishbone Slave ports  
@@ -8834,8 +8834,8 @@ module Ibtida_top_dffram_cv(
 
   DFFRAM #(1) DCCM(
     `ifdef USE_POWER_PINS
-        .VPWR(VPWR),
-        .VGND(VGND),
+        .VPWR(vccd1),
+        .VGND(vssd1),
     `endif
     .CLK(clock),
     .WE(WE_DCCM),
@@ -8857,8 +8857,8 @@ module Ibtida_top_dffram_cv(
 
   DFFRAM #(1) ICCM(
     `ifdef USE_POWER_PINS
-        .VPWR(VPWR),
-        .VGND(VGND),
+        .VPWR(vccd1),
+        .VGND(vssd1),
     `endif
     .CLK(clock),
     .WE(WE_ICCM),

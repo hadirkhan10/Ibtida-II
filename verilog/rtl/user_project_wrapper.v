@@ -43,7 +43,7 @@ module user_project_wrapper #(
     // Logic Analyzer Signals
     input  [127:0] la_data_in,
     output [127:0] la_data_out,
-    input  [127:0] la_oen,
+    input  [127:0] la_oenb,
 
     // IOs
     input  [`MPRJ_IO_PADS-1:0] io_in,
@@ -53,11 +53,14 @@ module user_project_wrapper #(
     // Analog (direct connection to GPIO pad---use with caution)
     // Note that analog I/O is not available on the 7 lowest-numbered
     // GPIO pads, and so the analog_io indexing is offset from the
-    // GPIO indexing by 7.
-    inout [`MPRJ_IO_PADS-8:0] analog_io,
+    // GPIO indexing by 7 (also upper 2 GPIOs do not have analog_io).
+    inout [`MPRJ_IO_PADS-10:0] analog_io,
 
     // Independent clock (on independent integer divider)
-    input   user_clock2
+    input   user_clock2,
+
+    // User maskable interrupt signals
+    output [2:0] user_irq
 );
 
     /*--------------------------------------*/
@@ -66,8 +69,8 @@ module user_project_wrapper #(
 
     Ibtida_top_dffram_cv mprj (
 `ifdef USE_POWER_PINS
-    .VPWR(vccd1),
-    .VGND(vssd1),			    
+    .vccd1(vccd1),
+    .vssd1(vssd1),			    
 `endif
 
 	// MGMT core clock and reset
@@ -75,18 +78,18 @@ module user_project_wrapper #(
     	.wb_clk_i(wb_clk_i),
     	.wb_rst_i(wb_rst_i),
 
-	// Logic Analyzer
 
 	.la_data_in(la_data_in),
 	.la_data_out(la_data_out),
-	.la_oen (la_oen),
+	.la_oen (la_oenb),
 
-	// IO Pads
+    // IO Pads
 
-	.io_in (io_in),
-    	.io_out(io_out),
-    	.io_oeb(io_oeb)
-    );
+    .io_in (io_in),
+    .io_out(io_out),
+    .io_oeb(io_oeb)
+
+);
 
 endmodule	// user_project_wrapper
 `default_nettype wire

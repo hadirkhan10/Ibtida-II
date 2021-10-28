@@ -23,8 +23,8 @@ set ::env(VERILOG_FILES) "\
         $script_dir/../../verilog/rtl/ibtida-soc/Ibtida_top_dffram_cv.v \
 	$::env(CARAVEL_ROOT)/verilog/rtl/DFFRAM*.v"
 
-set ::env(FP_CORE_UTIL) 50
-set ::env(PL_TARGET_DENSITY) 0.6
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) "0 0 2500 2920"
 set ::env(GLB_RT_ADJUSTMENT) 0.3
 
 set ::env(GENERATE_FINAL_SUMMARY_REPORT) 1
