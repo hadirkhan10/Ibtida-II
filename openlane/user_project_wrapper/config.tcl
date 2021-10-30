@@ -44,20 +44,21 @@ set ::env(CLOCK_PERIOD) "10"
 ### Macro PDN Connections
 set ::env(FP_PDN_MACRO_HOOKS) "\
 	mprj vccd1 vssd1"
-
 ### Macro Placement
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 
+set ::env(FP_PDN_IRDROP) 0
 ### Black-box verilog and views
 set ::env(VERILOG_FILES_BLACKBOX) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/user_proj_example.v"
+	$script_dir/../../verilog/rtl/ibtida-soc/Ibtida_top_dffram_cv.v"
 
 set ::env(EXTRA_LEFS) "\
-	$script_dir/../../lef/user_proj_example.lef"
+	$script_dir/../../lef/Ibtida_top_dffram_cv.lef"
 
-set ::env(EXTRA_GDS_FILES) "\
-	$script_dir/../../gds/user_proj_example.gds"
+
+set ::env(EXTRA_GDS_FILES) " \
+	$script_dir/../../gds/Ibtida_top_dffram_cv.gds"
 
 set ::env(GLB_RT_MAXLAYER) 5
 
@@ -74,7 +75,7 @@ set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_BUFFER_INPUT_PORTS) 0
 set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 0
 
-set ::env(FP_PDN_ENABLE_RAILS) 0
+set ::env(FP_PDN_ENABLE_RAILS) 0 
 
 set ::env(DIODE_INSERTION_STRATEGY) 0
 set ::env(FILL_INSERTION) 0
