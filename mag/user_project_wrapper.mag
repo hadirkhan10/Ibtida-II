@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1636842629
+timestamp 1636904460
 << locali >>
 rect 190377 57443 190411 57749
 rect 190929 57103 190963 57477
@@ -41892,7 +41892,7 @@ rect 592298 -7622 592382 -7386
 rect 592618 -7622 592650 -7386
 rect -8726 -7654 592650 -7622
 use Ibtida_top_dffram_cv  mprj
-timestamp 1636842629
+timestamp 1636904460
 transform 1 0 72000 0 1 60000
 box 0 0 447948 592008
 << labels >>
